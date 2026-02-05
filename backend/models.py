@@ -1,12 +1,14 @@
-from sqlalchemy import Column, Integer, String, Date, Numeric, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, Numeric, ForeignKey, DateTime
+from datetime import datetime
 from database import Base
 
 class Owner(Base):
     __tablename__ = "owners"
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     mobile = Column(String)
     village = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 class Tractor(Base):
     __tablename__ = "tractors"
